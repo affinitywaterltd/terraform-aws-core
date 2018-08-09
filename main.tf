@@ -16,3 +16,10 @@ resource "aws_iam_account_password_policy" "strict" {
   allow_users_to_change_password = true
 }
 
+resource "aws_cloudtrail" "global_Default" {
+  name                          = "Default"
+  s3_bucket_name                = "${local.trail_bucket_id}"
+  is_multi_region_trail         = true
+  include_global_service_events = true
+  enable_log_file_validation    = true
+}
