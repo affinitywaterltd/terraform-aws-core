@@ -4,7 +4,7 @@ data "terraform_remote_state" "logs" {
   backend = "atlas"
 
   config {
-    name = "{AffinityWater/logs-core-prod}"
+    name = "AffinityWater/logs-core-prod"
   }
 }
 
