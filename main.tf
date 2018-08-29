@@ -29,5 +29,5 @@ resource "aws_cloudtrail" "global_Default" {
 # Alias
 
 resource "aws_iam_account_alias" "alias" {
-  account_alias = "awl-${var.account}"
+  account_alias = "awl-${var.alias}"
 }
