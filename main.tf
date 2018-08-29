@@ -16,10 +16,18 @@ resource "aws_iam_account_password_policy" "strict" {
   allow_users_to_change_password = true
 }
 
+# Cloudtrail
+
 resource "aws_cloudtrail" "global_Default" {
   name                          = "Default"
   s3_bucket_name                = "${local.cloudtrail_bucket_id}"
   is_multi_region_trail         = true
   include_global_service_events = true
   enable_log_file_validation    = true
+}
+
+# Alias
+
+resource "aws_iam_account_alias" "alias" {
+  account_alias = "awl-${var.account}"
 }
