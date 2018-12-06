@@ -1,7 +1,7 @@
 
 # Default Option Group for Oracle-SE1
 resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_a" {
-  name                     = "rds_options_oracle_se1_v11_2_a"
+  name                     = "rds-options-oracle-se1-v11-2-a"
   option_group_description = "Default + Statpack + NW Encryption"
   engine_name              = "oracle-se1"
   major_engine_version     = "11.2"
