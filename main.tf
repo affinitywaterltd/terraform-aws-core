@@ -24,6 +24,7 @@ resource "aws_cloudtrail" "global_Default" {
   is_multi_region_trail         = true
   include_global_service_events = true
   enable_log_file_validation    = true
+  tags                          = "${local.base_tags}"
 }
 
 # Alias

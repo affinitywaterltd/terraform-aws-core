@@ -13,9 +13,3 @@ locals {
 }
 
 variable "alias" {}
-
-locals {
-  common_tags = "${map(
-    "Terraform",       "True"
-  )}"
-}
