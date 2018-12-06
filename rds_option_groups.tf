@@ -6,7 +6,7 @@ resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_a" {
   engine_name              = "oracle-se1"
   major_engine_version     = "11.2"
 
-  tags = "${local.common_tags}"
+  tags = "${local.base_tags}"
 
   option {
     option_name = "STATSPACK"
@@ -43,7 +43,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_a" {
   engine_name              = "oracle-se2"
   major_engine_version     = "12.1"
 
-  tags = "${local.common_tags}"
+  tags = "${local.base_tags}"
 
   option {
     option_name = "STATSPACK"
@@ -80,7 +80,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_2_a" {
   engine_name              = "oracle-se2"
   major_engine_version     = "12.2"
 
-  tags = "${local.common_tags}"
+  tags = "${local.base_tags}"
 
   option {
     option_name = "STATSPACK"
