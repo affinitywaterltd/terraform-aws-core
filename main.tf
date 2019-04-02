@@ -32,3 +32,28 @@ resource "aws_cloudtrail" "global_Default" {
 resource "aws_iam_account_alias" "alias" {
   account_alias = "awl-${var.alias}"
 }
+
+# SSM Parameters
+resource "aws_ssm_parameter" "ssm_param_cloudwatch_windows" {
+  name  = "AmazonCloudWatch-windows"
+  type  = "String"
+  overwrite = true
+  tags = "${local.base_tags}"
+  value = <<DOC
+{
+	"metrics": {
+		"metrics_collected": {
+			"Memory": {
+				"measurement": [
+					"% Committed Bytes In Use"
+				],
+				"metrics_collection_interval": 60
+			}
+		},
+		"append_dimensions": {
+			"InstanceId": "${aws:InstanceId}"
+		}
+	}
+}
+DOC
+}
