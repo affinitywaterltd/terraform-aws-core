@@ -39,21 +39,5 @@ resource "aws_ssm_parameter" "ssm_param_cloudwatch_windows" {
   type  = "String"
   overwrite = true
   tags = "${local.base_tags}"
-  value = <<DOC
-{
-	"metrics": {
-		"metrics_collected": {
-			"Memory": {
-				"measurement": [
-					"% Committed Bytes In Use"
-				],
-				"metrics_collection_interval": 60
-			}
-		},
-		"append_dimensions": {
-			"InstanceId": "${aws:InstanceId}"
-		}
-	}
-}
-DOC
+  value = "${"${file("cloudwatch_windows.json")}"}"
 }
