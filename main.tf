@@ -39,5 +39,5 @@ resource "aws_ssm_parameter" "ssm_param_cloudwatch_windows" {
   type  = "String"
   overwrite = true
   tags = "${local.base_tags}"
-  value = "${"${file("cloudwatch_windows.json")}"}"
+  value = "${"${file("${path.module}/cloudwatch_windows.json")}"}"
 }
