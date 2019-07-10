@@ -81,4 +81,50 @@ resource "aws_db_parameter_group" "maximo" {
     name  = "use_large_pages"
     value = "{DBInstanceClassHugePagesDefault}"
   }
+  
+  # Extras from default for Maximo
+  parameter {
+    name  = "cursor_sharing"
+    value = "force"
+  }
+  
+  parameter {
+    name  = "nls_length_semantics"
+    value = "char"
+  }
+  
+  parameter {
+    name  = "workarea_size_policy"
+    value = "auto"
+  }
+  
+  parameter {
+    name  = "processes"
+    value = "4000"
+  }
+  
+  parameter {
+    name  = "open_cursors"
+    value = "3000"
+  }
+  
+  parameter {
+    name  = "sessions"
+    value = "4000"
+  }
+  
+  parameter {
+    name  = "transactions"
+    value = "2425"
+  }
+  
+  parameter {
+    name  = "cached_cursors"
+    value = "400"
+  }
+  
+  parameter {
+    name  = "session_max_open_files"
+    value = "300"
+  }
 }
