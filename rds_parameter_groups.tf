@@ -100,6 +100,7 @@ resource "aws_db_parameter_group" "maximo" {
   
   parameter {
     name  = "processes"
+    apply_method = "pending-reboot"
     value = "4000"
   }
   
@@ -110,11 +111,13 @@ resource "aws_db_parameter_group" "maximo" {
   
   parameter {
     name  = "sessions"
+    apply_method = "pending-reboot"
     value = "4000"
   }
   
   parameter {
     name  = "transactions"
+    apply_method = "pending-reboot"
     value = "2425"
   }
   
@@ -126,6 +129,7 @@ resource "aws_db_parameter_group" "maximo" {
   
   parameter {
     name  = "session_max_open_files"
+    apply_method = "pending-reboot"
     value = "300"
   }
 }
