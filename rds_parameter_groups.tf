@@ -119,7 +119,7 @@ resource "aws_db_parameter_group" "maximo" {
   }
   
   parameter {
-    name  = "cached_cursors"
+    name  = "session_cached_cursors"
     value = "400"
   }
   
