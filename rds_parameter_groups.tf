@@ -46,7 +46,7 @@ resource "aws_db_parameter_group" "maximo" {
     name  = "db_unique_name"
     value = "{dbName}_{DBUniqueNameSuffix}"
   }
-  
+  /*
   parameter {
     name  = "dg_broker_config_file1"
     value = "/rdsdbdata/config/dr1{dbName}.dat"
@@ -55,7 +55,7 @@ resource "aws_db_parameter_group" "maximo" {
   parameter {
     name  = "dg_broker_config_file2"
     value = "/rdsdbdata/config/dr2{dbName}.dat"
-  }
+  }*/
   
   parameter {
     name  = "diagnostic_dest"
