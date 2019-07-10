@@ -11,11 +11,11 @@ resource "aws_db_parameter_group" "maximo" {
     name  = "audit_file_dest"
     value = "/rdsdbdata/admin/{dbName}/adump"
   }
-
+  /*
   parameter {
     name  = "control_files"
     value = "/rdsdbdata/db/{dbName}_{DBUniqueNameSuffix}/controlfile/control-01.ctl"
-  }
+  }*/
   
   parameter {
     name  = "db_block_checking"
