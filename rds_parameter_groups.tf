@@ -120,6 +120,7 @@ resource "aws_db_parameter_group" "maximo" {
   
   parameter {
     name  = "session_cached_cursors"
+    apply_method = "pending-reboot"
     value = "400"
   }
   
