@@ -6,25 +6,10 @@ resource "aws_db_parameter_group" "maximo" {
     name  = "archive_lag_target"
     value = "300"
   }
-
-  parameter {
-    name  = "audit_file_dest"
-    value = "/rdsdbdata/admin/{dbName}/adump"
-  }
-  /*
-  parameter {
-    name  = "control_files"
-    value = "/rdsdbdata/db/{dbName}_{DBUniqueNameSuffix}/controlfile/control-01.ctl"
-  }*/
   
   parameter {
     name  = "db_block_checking"
     value = "MEDIUM"
-  }
-  
-  parameter {
-    name  = "db_create_file_dest"
-    value = "/rdsdbdata/db"
   }
   
   parameter {
@@ -33,44 +18,9 @@ resource "aws_db_parameter_group" "maximo" {
   }
   
   parameter {
-    name  = "db_name"
-    value = "{dbName}"
-  }
-  
-  parameter {
     name  = "db_recovery_file_dest_size"
     value = "1073741824"
   }
-  
-  parameter {
-    name  = "db_unique_name"
-    value = "{dbName}_{DBUniqueNameSuffix}"
-  }
-  /*
-  parameter {
-    name  = "dg_broker_config_file1"
-    value = "/rdsdbdata/config/dr1{dbName}.dat"
-  }
-  
-  parameter {
-    name  = "dg_broker_config_file2"
-    value = "/rdsdbdata/config/dr2{dbName}.dat"
-  }*/
-  
-  parameter {
-    name  = "diagnostic_dest"
-    value = "/rdsdbdata/log"
-  }
-  
-  parameter {
-    name  = "enable_pluggable_database"
-    value = "FALSE"
-  }
-  /*
-  parameter {
-    name  = "filesystemio_options"
-    value = "setall"
-  }*/
   
   parameter {
     name  = "heat_map"
@@ -80,21 +30,6 @@ resource "aws_db_parameter_group" "maximo" {
   parameter {
     name  = "job_queue_processes"
     value = "50"
-  }
-  
-  parameter {
-    name  = "local_listener"
-    value = "(address=(protocol=tcp)(host=)(port={EndPointPort}))"
-  }
-  
-  parameter {
-    name  = "log_archive_dest_1"
-    value = "location=\"/rdsdbdata/db/{dbName}_{DBUniqueNameSuffix}/arch/redolog\", valid_for=(ALL_LOGFILES,ALL_ROLES)"
-  }
-  
-  parameter {
-    name  = "log_archive_format"
-    value = "-%s-%t-%r.arc"
   }
   
   parameter {
@@ -135,16 +70,6 @@ resource "aws_db_parameter_group" "maximo" {
   parameter {
     name  = "sga_target"
     value = "IF({DBInstanceClassHugePagesDefault}, {DBInstanceClassMemory*3/4}, 0)"
-  }
-  
-  parameter {
-    name  = "spfile"
-    value = "/rdsdbbin/oracle/dbs/spfile{dbName}.ora"
-  }
-  
-  parameter {
-    name  = "standby_file_management"
-    value = "AUTO"
   }
   
   parameter {
