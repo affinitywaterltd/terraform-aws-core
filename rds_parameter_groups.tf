@@ -130,6 +130,6 @@ resource "aws_db_parameter_group" "maximo" {
   parameter {
     name  = "session_max_open_files"
     apply_method = "pending-reboot"
-    value = "300"
+    value = "50"
   }
 }
