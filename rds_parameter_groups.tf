@@ -66,11 +66,11 @@ resource "aws_db_parameter_group" "maximo" {
     name  = "enable_pluggable_database"
     value = "FALSE"
   }
-  
+  /*
   parameter {
     name  = "filesystemio_options"
     value = "setall"
-  }
+  }*/
   
   parameter {
     name  = "heat_map"
