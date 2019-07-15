@@ -1,5 +1,5 @@
 resource "aws_db_parameter_group" "maximo" {
-  name   = "rds-option-group-oracle-se2-12-1-maximo"
+  name   = "rds-parameter-group-oracle-se2-12-1-maximo"
   family = "oracle-se2-12.1"
 
   parameter {
