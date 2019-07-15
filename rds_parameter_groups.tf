@@ -58,11 +58,6 @@ resource "aws_db_parameter_group" "maximo" {
   }
   
   parameter {
-    name  = "processes"
-    value = "LEAST({DBInstanceClassMemory/9868951}, 20000)"
-  }
-  
-  parameter {
     name  = "recyclebin"
     value = "OFF"
   }
@@ -104,10 +99,6 @@ resource "aws_db_parameter_group" "maximo" {
     value = "4000"
   }
   
-  parameter {
-    name  = "open_cursors"
-    value = "3000"
-  }
   
   parameter {
     name  = "sessions"
