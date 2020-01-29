@@ -14,6 +14,7 @@ output "rds_options_oracle_se2_v12_2_a" {
   value       = "${aws_db_option_group.rds_options_oracle_se2_v12_2_a.name}"
 }
 
+
 # Option sets with Timezone
 output "rds_options_oracle_se1_v11_2_b" {
   description = "Oracle-SE1 - Default + Statpack + NW Encryption + Timezone"
