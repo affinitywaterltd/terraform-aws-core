@@ -41,3 +41,11 @@ resource "aws_ssm_parameter" "ssm_param_cloudwatch_windows" {
   tags = "${local.base_tags}"
   value = "${"${file("${path.module}/cloudwatch_windows.json")}"}"
 }
+
+resource "aws_ssm_parameter" "ssm_param_cloudwatch_linux" {
+  name  = "AmazonCloudWatch-linux"
+  type  = "String"
+  overwrite = true
+  tags = "${local.base_tags}"
+  value = "${"${file("${path.module}/cloudwatch_linux.json")}"}"
+}
