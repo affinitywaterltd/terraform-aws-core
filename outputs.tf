@@ -33,7 +33,7 @@ output "rds_options_oracle_se2_v12_2_b" {
 
 output "rds_options_oracle_se2_v19_0_b" {
   description = "Oracle-SE2 - Default + Statpack + NW Encryption + Timezone"
-  value       = "${aws_db_option_group.rds_options_oracle_se2_v12_2_b.name}"
+  value       = "${aws_db_option_group.rds_options_oracle_se2_v19_0_b.name}"
 }
 
 # Option sets without NW Encryption
