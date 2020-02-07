@@ -247,7 +247,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v18_0_b" {
   name                     = "rds-options-oracle-se2-v18-0-b"
   option_group_description = "Default + Statspack + NW Encryption + Timezone"
   engine_name              = "oracle-se2"
-  major_engine_version     = "19"
+  major_engine_version     = "18"
 
   tags = "${local.base_tags}"
 
