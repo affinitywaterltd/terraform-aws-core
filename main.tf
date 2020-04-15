@@ -2,7 +2,7 @@
 
 resource "aws_iam_saml_provider" "AzureAd" {
   name                   = "Azure_AD"
-  saml_metadata_document = "${"${file("saml.xml")}"}"
+  saml_metadata_document = file("saml.xml")
 }
 
 # Password Policy
@@ -20,11 +20,11 @@ resource "aws_iam_account_password_policy" "strict" {
 
 resource "aws_cloudtrail" "global_Default" {
   name                          = "Default"
-  s3_bucket_name                = "${local.cloudtrail_bucket_id}"
+  s3_bucket_name                = local.cloudtrail_bucket_id
   is_multi_region_trail         = true
   include_global_service_events = true
   enable_log_file_validation    = true
-  tags                          = "${local.base_tags}"
+  tags                          = local.base_tags
 }
 
 # Alias
@@ -35,17 +35,18 @@ resource "aws_iam_account_alias" "alias" {
 
 # SSM Parameters
 resource "aws_ssm_parameter" "ssm_param_cloudwatch_windows" {
-  name  = "AmazonCloudWatch-windows"
-  type  = "String"
+  name      = "AmazonCloudWatch-windows"
+  type      = "String"
   overwrite = true
-  tags = "${local.base_tags}"
-  value = "${"${file("${path.module}/cloudwatch_windows.json")}"}"
+  tags      = local.base_tags
+  value     = file("${path.module}/cloudwatch_windows.json")
 }
 
 resource "aws_ssm_parameter" "ssm_param_cloudwatch_linux" {
-  name  = "AmazonCloudWatch-linux"
-  type  = "String"
+  name      = "AmazonCloudWatch-linux"
+  type      = "String"
   overwrite = true
-  tags = "${local.base_tags}"
-  value = "${"${file("${path.module}/cloudwatch_linux.json")}"}"
+  tags      = local.base_tags
+  value     = file("${path.module}/cloudwatch_linux.json")
 }
+

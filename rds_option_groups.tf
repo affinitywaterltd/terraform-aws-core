@@ -1,4 +1,3 @@
-
 # Default Option Group for Oracle-SE1
 resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_a" {
   name                     = "rds-options-oracle-se1-v11-2-a"
@@ -6,7 +5,7 @@ resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_a" {
   engine_name              = "oracle-se1"
   major_engine_version     = "11.2"
 
-  tags = "${local.base_tags}"
+  tags = local.base_tags
 
   option {
     option_name = "STATSPACK"
@@ -33,7 +32,6 @@ resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_a" {
     }
   }
 }
-
 
 # Default Option Group for Oracle-SE2
 resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_a" {
@@ -42,7 +40,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_a" {
   engine_name              = "oracle-se2"
   major_engine_version     = "12.1"
 
-  tags = "${local.base_tags}"
+  tags = local.base_tags
 
   option {
     option_name = "STATSPACK"
@@ -69,7 +67,6 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_a" {
     }
   }
 }
-
 
 # Default Option Group for Oracle-SE2
 resource "aws_db_option_group" "rds_options_oracle_se2_v12_2_a" {
@@ -78,7 +75,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_2_a" {
   engine_name              = "oracle-se2"
   major_engine_version     = "12.2"
 
-  tags = "${local.base_tags}"
+  tags = local.base_tags
 
   option {
     option_name = "STATSPACK"
@@ -105,7 +102,6 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_2_a" {
     }
   }
 }
-
 
 # Default Option Group with Timezone for Oracle-SE1
 resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_b" {
@@ -114,7 +110,7 @@ resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_b" {
   engine_name              = "oracle-se1"
   major_engine_version     = "11.2"
 
-  tags = "${local.base_tags}"
+  tags = local.base_tags
 
   option {
     option_name = "STATSPACK"
@@ -150,7 +146,6 @@ resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_b" {
     }
   }
 }
-
 
 # Default Option Group with Timezone for Oracle-SE2
 resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_b" {
@@ -159,7 +154,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_b" {
   engine_name              = "oracle-se2"
   major_engine_version     = "12.1"
 
-  tags = "${local.base_tags}"
+  tags = local.base_tags
 
   option {
     option_name = "STATSPACK"
@@ -195,7 +190,6 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_b" {
     }
   }
 }
-
 
 # Default Option Group with Timezone for Oracle-SE2
 resource "aws_db_option_group" "rds_options_oracle_se2_v12_2_b" {
@@ -204,7 +198,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_2_b" {
   engine_name              = "oracle-se2"
   major_engine_version     = "12.2"
 
-  tags = "${local.base_tags}"
+  tags = local.base_tags
 
   option {
     option_name = "STATSPACK"
@@ -240,7 +234,6 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_2_b" {
     }
   }
 }
-
 
 # Default Option Group with Timezone for Oracle-SE2
 resource "aws_db_option_group" "rds_options_oracle_se2_v18_0_b" {
@@ -249,7 +242,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v18_0_b" {
   engine_name              = "oracle-se2"
   major_engine_version     = "18"
 
-  tags = "${local.base_tags}"
+  tags = local.base_tags
 
   option {
     option_name = "STATSPACK"
@@ -285,7 +278,6 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v18_0_b" {
     }
   }
 }
-
 
 # Default Option Group with Timezone for Oracle-SE2
 resource "aws_db_option_group" "rds_options_oracle_se2_v19_0_b" {
@@ -294,7 +286,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v19_0_b" {
   engine_name              = "oracle-se2"
   major_engine_version     = "19"
 
-  tags = "${local.base_tags}"
+  tags = local.base_tags
 
   option {
     option_name = "STATSPACK"
@@ -331,7 +323,6 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v19_0_b" {
   }
 }
 
-
 # Default Option Group with Timezone for Oracle-SE1
 resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_c" {
   name                     = "rds-options-oracle-se1-v11-2-c"
@@ -339,7 +330,7 @@ resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_c" {
   engine_name              = "oracle-se1"
   major_engine_version     = "11.2"
 
-  tags = "${local.base_tags}"
+  tags = local.base_tags
 
   option {
     option_name = "STATSPACK"
@@ -354,7 +345,6 @@ resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_c" {
     }
   }
 }
-
 
 # Default Option Group with Timezone for Oracle-SE2
 resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_c" {
@@ -363,7 +353,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_c" {
   engine_name              = "oracle-se2"
   major_engine_version     = "12.1"
 
-  tags = "${local.base_tags}"
+  tags = local.base_tags
 
   option {
     option_name = "STATSPACK"
@@ -378,7 +368,6 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_c" {
     }
   }
 }
-
 
 # Default Option Group with Timezone for Oracle-SE2
 resource "aws_db_option_group" "rds_options_oracle_se2_v12_2_c" {
@@ -387,7 +376,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_2_c" {
   engine_name              = "oracle-se2"
   major_engine_version     = "12.2"
 
-  tags = "${local.base_tags}"
+  tags = local.base_tags
 
   option {
     option_name = "STATSPACK"
@@ -402,3 +391,4 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_2_c" {
     }
   }
 }
+
