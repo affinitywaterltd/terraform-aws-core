@@ -207,6 +207,12 @@ resource "aws_backup_selection" "aws_backup_selection_daily_1300_30days" {
     key   = "Scheduler:Snapshot"
     value = "1300;30"
   }
+  
+  selection_tag {
+    type  = "STRINGEQUALS"
+    key   = "aws_backup_plan_daily_1300_30days"
+    value = "true"
+  }
 }
 
 
@@ -326,6 +332,12 @@ resource "aws_backup_selection" "aws_backup_selection_daily_2200_7days" {
     type  = "STRINGEQUALS"
     key   = "Scheduler:Snapshot"
     value = "2200;7"
+  }
+  
+  selection_tag {
+    type  = "STRINGEQUALS"
+    key   = "aws_backup_plan_daily_2200_7days"
+    value = "true"
   }
 }
 
