@@ -1,4 +1,4 @@
-locals {
+/*locals {
   time_offset = -1
 }
 
@@ -370,4 +370,4 @@ resource "aws_backup_selection" "aws_backup_selection_daily_2200_730days" {
     key   = "BackupMonthly"
     value = "2200;2yr"
   }
-}
+}*/
