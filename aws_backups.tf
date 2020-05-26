@@ -259,7 +259,7 @@ resource "aws_backup_selection" "aws_backup_selection_daily_0200_30days" {
 
 
 #
-# Frequency - Weekly
+# Frequency - Daily
 # Time - 2200
 # Retention - 7days
 #
@@ -334,19 +334,19 @@ resource "aws_backup_selection" "aws_backup_selection_daily_2200_7days" {
 #
 # AWS Backup Plan
 #
-resource "aws_backup_plan" "aws_backup_plan_daily_2200_730days" {
-  name = "aws_backup_plan_daily_2200_730days"
+resource "aws_backup_plan" "aws_backup_plan_monthly_2200_730days" {
+  name = "aws_backup_plan_monthly_2200_730days"
   rule {
-    rule_name         = "aws_backup_rule_daily_2200_730days"
+    rule_name         = "aws_backup_rule_monthly_2200_730days"
     target_vault_name = aws_backup_vault.aws_backup_vault_master.name
 
-    schedule          = "cron(0 ${22 + local.time_offset} * * ? *)"
+    schedule          = "cron(0 ${22 + local.time_offset} 1 1/1 ? *)"
     start_window      = 60
     completion_window = 360
 
     recovery_point_tags = {
         BackupApplication   = "AWS Backups"
-        BackupPlan          = "aws_backup_plan_daily_2200_730days"
+        BackupPlan          = "aws_backup_plan_monthly_2200_730days"
     }
 
     lifecycle {
@@ -359,9 +359,9 @@ resource "aws_backup_plan" "aws_backup_plan_daily_2200_730days" {
 #
 # AWS Backup Selection
 #
-resource "aws_backup_selection" "aws_backup_selection_daily_2200_730days" {
-  name          = "aws_backup_selection_daily_2200_730days"
-  plan_id       = aws_backup_plan.aws_backup_plan_daily_2200_730days.id
+resource "aws_backup_selection" "aws_backup_selection_monthly_2200_730days" {
+  name          = "aws_backup_selection_monthly_2200_730days"
+  plan_id       = aws_backup_plan.aws_backup_plan_monthly_2200_730days.id
   iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
 
 
