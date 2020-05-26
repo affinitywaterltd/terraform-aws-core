@@ -1,5 +1,8 @@
 locals {
-  time_offset = -1
+  #Adjusts the times for BST/GMT changes
+  # BST - Set to -1
+  # GMT - Set to 0
+  time_offset = 2
 }
 
 #
