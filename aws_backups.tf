@@ -415,6 +415,13 @@ resource "aws_backup_plan" "aws_backup_plan_monthly_0400_2555days" {
       delete_after        = 2555
     }
   }
+  
+  #Ignore changes for 7 year retention as month end moved around not on a defined schedule
+  lifecycle {
+    ignore_changes = [
+      rule,
+    ]
+  }
 }
 
 #
