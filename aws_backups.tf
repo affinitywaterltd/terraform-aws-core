@@ -2,7 +2,7 @@ locals {
   #Adjusts the times for BST/GMT changes
   # BST - Set to -1
   # GMT - Set to 0
-  time_offset = 1
+  time_offset = -1
 }
 
 #
@@ -384,5 +384,51 @@ resource "aws_backup_selection" "aws_backup_selection_monthly_2200_730days" {
     type  = "STRINGEQUALS"
     key   = "BackupMonthly"
     value = "2200;2yr"
+  }
+}
+
+
+#
+# Frequency - Monthly
+# Time - 0400
+# Retention - 7years (2555 days)
+#
+# AWS Backup Plan
+#
+resource "aws_backup_plan" "aws_backup_plan_monthly_0400_2555days" {
+  name = "aws_backup_plan_monthly_0400_2555days"
+  rule {
+    rule_name         = "aws_backup_rule_monthly_2200_2555days"
+    target_vault_name = aws_backup_vault.aws_backup_vault_master.name
+
+    schedule          = "cron(0 ${04 + local.time_offset} ? 1/1 THU#3 *)"
+    start_window      = 60
+    completion_window = 360
+
+    recovery_point_tags = {
+        BackupApplication   = "AWS Backups"
+        BackupPlan          = "aws_backup_plan_monthly_2200_2555days"
+    }
+
+    lifecycle {
+      cold_storage_after  = 0
+      delete_after        = 2555
+    }
+  }
+}
+
+#
+# AWS Backup Selection
+#
+resource "aws_backup_selection" "aws_backup_selection_monthly_0400_2555days" {
+  name          = "aws_backup_selection_monthly_2200_2555days"
+  plan_id       = aws_backup_plan.aws_backup_plan_monthly_0400_2555days.id
+  iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
+
+
+  selection_tag {
+    type  = "STRINGEQUALS"
+    key   = "aws_backup_plan_monthly_0400_2555days"
+    value = "true"
   }
 }
