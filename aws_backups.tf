@@ -111,6 +111,12 @@ resource "aws_backup_selection" "aws_backup_selection_daily_2200_30days" {
 
   selection_tag {
     type  = "STRINGEQUALS"
+    key   = aws_backup_plan.aws_backup_plan_daily_2200_30days.name
+    value = "true"
+  }
+
+  selection_tag {
+    type  = "STRINGEQUALS"
     key   = "BackupDaily"
     value = "2200:30"
   }
@@ -177,6 +183,12 @@ resource "aws_backup_selection" "aws_backup_selection_daily_1300_30days" {
   name          = "aws_backup_selection_daily_1300_30days"
   plan_id       = aws_backup_plan.aws_backup_plan_daily_1300_30days.id
   iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
+  
+  selection_tag {
+    type  = "STRINGEQUALS"
+    key   = aws_backup_plan.aws_backup_plan_daily_1300_30days.name
+    value = "true"
+  }
 
   selection_tag {
     type  = "STRINGEQUALS"
@@ -206,12 +218,6 @@ resource "aws_backup_selection" "aws_backup_selection_daily_1300_30days" {
     type  = "STRINGEQUALS"
     key   = "Scheduler:Snapshot"
     value = "1300;30"
-  }
-  
-  selection_tag {
-    type  = "STRINGEQUALS"
-    key   = "aws_backup_plan_daily_1300_30days"
-    value = "true"
   }
 }
 
@@ -252,7 +258,13 @@ resource "aws_backup_selection" "aws_backup_selection_daily_0200_30days" {
   name          = "aws_backup_selection_daily_0200_30days"
   plan_id       = aws_backup_plan.aws_backup_plan_daily_0200_30days.id
   iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
-
+  
+  selection_tag {
+    type  = "STRINGEQUALS"
+    key   = aws_backup_plan.aws_backup_plan_daily_0200_30days.name
+    value = "true"
+  }
+  
   selection_tag {
     type  = "STRINGEQUALS"
     key   = "BackupDaily"
@@ -303,7 +315,13 @@ resource "aws_backup_selection" "aws_backup_selection_daily_2200_7days" {
   name          = "aws_backup_selection_daily_2200_7days"
   plan_id       = aws_backup_plan.aws_backup_plan_daily_2200_7days.id
   iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
-
+  
+  selection_tag {
+    type  = "STRINGEQUALS"
+    key   = aws_backup_plan.aws_backup_plan_daily_2200_7days.name
+    value = "true"
+  }
+  
   selection_tag {
     type  = "STRINGEQUALS"
     key   = "BackupDaily"
@@ -332,12 +350,6 @@ resource "aws_backup_selection" "aws_backup_selection_daily_2200_7days" {
     type  = "STRINGEQUALS"
     key   = "Scheduler:Snapshot"
     value = "2200;7"
-  }
-  
-  selection_tag {
-    type  = "STRINGEQUALS"
-    key   = "aws_backup_plan_daily_2200_7days"
-    value = "true"
   }
 }
 
@@ -378,7 +390,12 @@ resource "aws_backup_selection" "aws_backup_selection_monthly_2200_730days" {
   name          = "aws_backup_selection_monthly_2200_730days"
   plan_id       = aws_backup_plan.aws_backup_plan_monthly_2200_730days.id
   iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
-
+  
+  selection_tag {
+    type  = "STRINGEQUALS"
+    key   = aws_backup_plan.aws_backup_plan_monthly_2200_730days.name
+    value = "true"
+  }
 
   selection_tag {
     type  = "STRINGEQUALS"
@@ -431,11 +448,10 @@ resource "aws_backup_selection" "aws_backup_selection_monthly_0400_2555days" {
   name          = "aws_backup_selection_monthly_2200_2555days"
   plan_id       = aws_backup_plan.aws_backup_plan_monthly_0400_2555days.id
   iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
-
-
+  
   selection_tag {
     type  = "STRINGEQUALS"
-    key   = "aws_backup_plan_monthly_0400_2555days"
+    key   = aws_backup_plan.aws_backup_plan_monthly_0400_2555days.name
     value = "true"
   }
 }
