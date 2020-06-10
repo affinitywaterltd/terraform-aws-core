@@ -8,18 +8,33 @@ locals {
 #
 # IAM Service Role
 #
-resource "aws_iam_service_linked_role" "aws_backup_service_role" {
-  aws_service_name = "backup.amazonaws.com"
+resource "aws_iam_role" "aws_backup_service_role" {
+  name               = "AWSBackupDefaultServiceRole"
+  path               = "/service-role/"
+  assume_role_policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": ["sts:AssumeRole"],
+      "Effect": "allow",
+      "Principal": {
+        "Service": ["backup.amazonaws.com"]
+      }
+    }
+  ]
 }
-/*
+POLICY
+}
+
 resource "aws_iam_role_policy_attachment" "aws_backup_service_role_attach_backup" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
-  role       = aws_iam_service_linked_role.aws_backup_service_role.name
+  role       = aws_iam_role.aws_backup_service_role.name
 }
 
 resource "aws_iam_role_policy_attachment" "aws_backup_service_role_attach_restore" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForRestores"
-  role       = aws_iam_service_linked_role.aws_backup_service_role.name
+  role       = aws_iam_role.aws_backup_service_role.name
 }
 
 resource "aws_iam_policy" "aws_backup_iam_assume_role" {
@@ -41,8 +56,8 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "aws_backup_iam_assume_attach" {
   policy_arn = aws_iam_policy.aws_backup_iam_assume_role.arn
-  role       = aws_iam_service_linked_role.aws_backup_service_role.name
-}*/
+  role       = aws_iam_role.aws_backup_service_role.name
+}
 
 
 #
@@ -93,7 +108,7 @@ resource "aws_backup_plan" "aws_backup_plan_daily_2200_30days" {
 resource "aws_backup_selection" "aws_backup_selection_daily_2200_30days" {
   name          = "aws_backup_selection_daily_2200_30days"
   plan_id       = aws_backup_plan.aws_backup_plan_daily_2200_30days.id
-  iam_role_arn  = aws_iam_service_linked_role.aws_backup_service_role.arn
+  iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
 
   selection_tag {
     type  = "STRINGEQUALS"
@@ -168,7 +183,7 @@ resource "aws_backup_plan" "aws_backup_plan_daily_1300_30days" {
 resource "aws_backup_selection" "aws_backup_selection_daily_1300_30days" {
   name          = "aws_backup_selection_daily_1300_30days"
   plan_id       = aws_backup_plan.aws_backup_plan_daily_1300_30days.id
-  iam_role_arn  = aws_iam_service_linked_role.aws_backup_service_role.arn
+  iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
   
   selection_tag {
     type  = "STRINGEQUALS"
@@ -243,7 +258,7 @@ resource "aws_backup_plan" "aws_backup_plan_daily_0200_30days" {
 resource "aws_backup_selection" "aws_backup_selection_daily_0200_30days" {
   name          = "aws_backup_selection_daily_0200_30days"
   plan_id       = aws_backup_plan.aws_backup_plan_daily_0200_30days.id
-  iam_role_arn  = aws_iam_service_linked_role.aws_backup_service_role.arn
+  iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
   
   selection_tag {
     type  = "STRINGEQUALS"
@@ -300,7 +315,7 @@ resource "aws_backup_plan" "aws_backup_plan_daily_2200_7days" {
 resource "aws_backup_selection" "aws_backup_selection_daily_2200_7days" {
   name          = "aws_backup_selection_daily_2200_7days"
   plan_id       = aws_backup_plan.aws_backup_plan_daily_2200_7days.id
-  iam_role_arn  = aws_iam_service_linked_role.aws_backup_service_role.arn
+  iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
   
   selection_tag {
     type  = "STRINGEQUALS"
@@ -375,7 +390,7 @@ resource "aws_backup_plan" "aws_backup_plan_monthly_2200_730days" {
 resource "aws_backup_selection" "aws_backup_selection_monthly_2200_730days" {
   name          = "aws_backup_selection_monthly_2200_730days"
   plan_id       = aws_backup_plan.aws_backup_plan_monthly_2200_730days.id
-  iam_role_arn  = aws_iam_service_linked_role.aws_backup_service_role.arn
+  iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
   
   selection_tag {
     type  = "STRINGEQUALS"
@@ -433,7 +448,7 @@ resource "aws_backup_plan" "aws_backup_plan_monthly_0400_2555days" {
 resource "aws_backup_selection" "aws_backup_selection_monthly_0400_2555days" {
   name          = "aws_backup_selection_monthly_2200_2555days"
   plan_id       = aws_backup_plan.aws_backup_plan_monthly_0400_2555days.id
-  iam_role_arn  = aws_iam_service_linked_role.aws_backup_service_role.arn
+  iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
   
   selection_tag {
     type  = "STRINGEQUALS"
