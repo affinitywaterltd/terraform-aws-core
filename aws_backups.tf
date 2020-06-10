@@ -11,7 +11,7 @@ locals {
 resource "aws_iam_service_linked_role" "aws_backup_service_role" {
   aws_service_name = "backup.amazonaws.com"
 }
-
+/*
 resource "aws_iam_role_policy_attachment" "aws_backup_service_role_attach_backup" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBackupServiceRolePolicyForBackup"
   role       = aws_iam_service_linked_role.aws_backup_service_role.name
@@ -42,7 +42,7 @@ EOF
 resource "aws_iam_role_policy_attachment" "aws_backup_iam_assume_attach" {
   policy_arn = aws_iam_policy.aws_backup_iam_assume_role.arn
   role       = aws_iam_service_linked_role.aws_backup_service_role.name
-}
+}*/
 
 
 #
