@@ -9,7 +9,6 @@ locals {
 # IAM Service Role
 #
 resource "aws_iam_service_linked_role" "aws_backup_service_role" {
-  name               = "AWSBackupDefaultServiceRole"
   aws_service_name = "backup.amazonaws.com"
 }
 
