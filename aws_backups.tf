@@ -11,20 +11,6 @@ locals {
 resource "aws_iam_service_linked_role" "aws_backup_service_role" {
   name               = "AWSBackupDefaultServiceRole"
   aws_service_name = "backup.amazonaws.com"
-  assume_role_policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": ["sts:AssumeRole"],
-      "Effect": "allow",
-      "Principal": {
-        "Service": ["backup.amazonaws.com"]
-      }
-    }
-  ]
-}
-POLICY
 }
 
 resource "aws_iam_role_policy_attachment" "aws_backup_service_role_attach_backup" {
