@@ -48,6 +48,12 @@ resource "aws_iam_policy" "aws_backup_iam_assume_role" {
             "Effect": "Allow",
             "Action": "sts:AssumeRole",
             "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": "*"
         }
     ]
 }
