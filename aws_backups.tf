@@ -2,7 +2,7 @@ locals {
   #Adjusts the times for BST/GMT changes
   # BST - Set to -1
   # GMT - Set to 0
-  time_offset = -1
+  time_offset = 0
 }
 
 #
@@ -285,6 +285,51 @@ resource "aws_backup_selection" "aws_backup_selection_daily_0200_30days" {
   }
 }
 
+
+
+#
+# Frequency - Weekly (Saturday)
+# Time - 0400
+# Retention - 30days
+#
+# AWS Backup Plan
+#
+resource "aws_backup_plan" "aws_backup_plan_weekly_sat_0400_30days" {
+  name = "aws_backup_plan_weekly_sat_0400_30days"
+  rule {
+    rule_name         = "aws_backup_rule_weekly_sat_0400_30days"
+    target_vault_name = aws_backup_vault.aws_backup_vault_master.name
+
+    schedule          = "cron(0 ${04 + local.time_offset} * * SAT *)"
+    start_window      = 60
+    completion_window = 360
+
+    recovery_point_tags = {
+        BackupApplication   = "AWS Backups"
+        BackupPlan          = "aws_backup_plan_weekly_sat_0400_30days"
+    }
+
+    lifecycle {
+      cold_storage_after  = 0
+      delete_after        = 30
+    }
+  }
+}
+
+#
+# AWS Backup Selection
+#
+resource "aws_backup_selection" "aws_backup_selection_weekly_sat_0400_30days" {
+  name          = "aws_backup_selection_weekly_sat_0400_30days"
+  plan_id       = aws_backup_plan.aws_backup_plan_weekly_sat_0400_30days.id
+  iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
+  
+  selection_tag {
+    type  = "STRINGEQUALS"
+    key   = aws_backup_plan.aws_backup_plan_weekly_sat_0400_30days.name
+    value = "true"
+  }
+}
 
 #
 # Frequency - Daily
