@@ -300,7 +300,7 @@ resource "aws_backup_plan" "aws_backup_plan_weekly_sat_0400_30days" {
     rule_name         = "aws_backup_rule_weekly_sat_0400_30days"
     target_vault_name = aws_backup_vault.aws_backup_vault_master.name
 
-    schedule          = "cron(0 ${04 + local.time_offset} * * SAT *)"
+    schedule          = "cron(0 ${04 + local.time_offset} * * ? *)"
     start_window      = 60
     completion_window = 360
 
