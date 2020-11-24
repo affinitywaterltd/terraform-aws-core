@@ -90,7 +90,7 @@ data "aws_iam_policy_document" "backup_notifications_iam_policy" {
     }
 
     resources = [
-      aws_sns_topic.test.arn,
+      aws_sns_topic.backup_notifications.arn,
     ]
 
     sid = "__default_statement_ID"
