@@ -66,6 +66,48 @@ resource "aws_iam_role_policy_attachment" "aws_backup_iam_assume_attach" {
 }
 
 
+
+#
+# AWS Backup Vault Notifications
+#
+resource "aws_sns_topic" "backup_notifications" {
+  name = "aws-backup-notifications"
+}
+
+data "aws_iam_policy_document" "backup_notifications_iam_policy" {
+  policy_id = "__default_policy_ID"
+
+  statement {
+    actions = [
+      "SNS:Publish",
+    ]
+
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["backup.amazonaws.com"]
+    }
+
+    resources = [
+      aws_sns_topic.test.arn,
+    ]
+
+    sid = "__default_statement_ID"
+  }
+}
+
+resource "aws_sns_topic_policy" "backup_notifications_sns_policy" {
+  arn    = aws_sns_topic.backup_notifications.arn
+  policy = data.aws_iam_policy_document.backup_notifications_iam_policy.json
+}
+
+resource "aws_backup_vault_notifications" "backup_notifications" {
+  backup_vault_name   = aws_backup_vault.aws_backup_vault_master.name
+  sns_topic_arn       = aws_sns_topic.backup_notifications.arn
+  backup_vault_events = ["BACKUP_JOB_FAILED", "RESTORE_JOB_COMPLETED", "RESTORE_JOB_FAILED", "COPY_JOB_FAILED"]
+}
+
 #
 # AWS Backup Vault
 #
