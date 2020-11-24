@@ -286,7 +286,7 @@ resource "aws_backup_plan" "aws_backup_plan_daily_0200_30days" {
 
     schedule          = "cron(0 ${02 + local.time_offset} * * ? *)"
     start_window      = 60
-    completion_window = 360
+    completion_window = 720
 
     recovery_point_tags = {
         BackupApplication   = "AWS Backups"
