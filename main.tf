@@ -54,7 +54,7 @@ resource "aws_ssm_parameter" "ssm_param_cloudwatch_linux" {
 
 resource "aws_ssm_parameter" "ssm_param_darktrace_hmac" {
   name      = "/application/config/darktrace/hmac"
-  type      = "String"
+  type      = "SecureString"
   overwrite = true
   tags      = local.base_tags
   value     = "undefined"
