@@ -52,3 +52,27 @@ resource "aws_ssm_parameter" "ssm_param_cloudwatch_linux" {
   value     = file("${path.module}/cloudwatch_linux.json")
 }
 
+resource "aws_ssm_parameter" "ssm_param_darktrace_hmac" {
+  name      = "/application/config/darktrace/hmac"
+  type      = "String"
+  overwrite = true
+  tags      = local.base_tags
+  value     = "undefined"
+
+  lifecycle {
+    ignore_changes = [value]
+  }
+}
+
+
+resource "aws_ssm_parameter" "ssm_param_darktrace_vsensor" {
+  name      = "/application/config/darktrace/vsensor"
+  type      = "String"
+  overwrite = true
+  tags      = local.base_tags
+  value     = "undefined"
+
+  lifecycle {
+    ignore_changes = [value]
+  }
+}
