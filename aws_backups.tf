@@ -144,7 +144,6 @@ resource "aws_backup_plan" "aws_backup_plan_daily_2200_30days" {
     }
 
     lifecycle {
-      cold_storage_after  = 0
       delete_after        = 30
     }
   }
@@ -219,7 +218,6 @@ resource "aws_backup_plan" "aws_backup_plan_daily_1300_30days" {
     }
 
     lifecycle {
-      cold_storage_after  = 0
       delete_after        = 30
     }
   }
@@ -294,7 +292,6 @@ resource "aws_backup_plan" "aws_backup_plan_daily_0200_30days" {
     }
 
     lifecycle {
-      cold_storage_after  = 0
       delete_after        = 30
     }
   }
@@ -352,7 +349,6 @@ resource "aws_backup_plan" "aws_backup_plan_weekly_sat_0500_30days" {
     }
 
     lifecycle {
-      cold_storage_after  = 0
       delete_after        = 30
     }
   }
@@ -396,7 +392,6 @@ resource "aws_backup_plan" "aws_backup_plan_daily_2200_7days" {
     }
 
     lifecycle {
-      cold_storage_after  = 0
       delete_after        = 7
     }
   }
@@ -471,7 +466,6 @@ resource "aws_backup_plan" "aws_backup_plan_monthly_2200_730days" {
     }
 
     lifecycle {
-      cold_storage_after  = 0
       delete_after        = 730
     }
   }
@@ -522,7 +516,6 @@ resource "aws_backup_plan" "aws_backup_plan_monthly_0400_2555days" {
     }
 
     lifecycle {
-      cold_storage_after  = 0
       delete_after        = 2555
     }
   }
