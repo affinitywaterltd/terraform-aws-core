@@ -8,6 +8,8 @@ data "terraform_remote_state" "logs" {
   }
 }
 
+data "aws_caller_identity" "current" {}
+
 data "aws_iam_role" "delivery_status_iam_role" {
   name = "awl-sns-delivery-logging"
 }

@@ -34,7 +34,7 @@ module "s3_sns_usage_report" {
   count = var.usage_report_s3_bucket == null ? 1 : 0
 
   source = "github.com/affinitywaterltd/terraform-aws-s3"
-  bucket = "awl-sns-usage_report-${var.account}-${var.environment}"
+  bucket = "awl-sns-usage_report-${data.aws_caller_identity.current.account_id}"
 
   tags = {
       "Description" = "S3 bucket used for SNS Usage Reports"
