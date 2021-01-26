@@ -11,6 +11,7 @@ data "terraform_remote_state" "logs" {
 data "aws_caller_identity" "current" {}
 
 data "aws_iam_role" "delivery_status_iam_role" {
+  count = var.configure_sns ? 1 : 0
   name = "awl-sns-delivery-logging"
 }
 
