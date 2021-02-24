@@ -7,6 +7,7 @@ variable "enabled" {
 variable "name_prefix" {
   type        = string
   description = "Name prefix used to create resources."
+  default     = "AWL-WAF-"
 }
 
 variable "alb_arn" {
