@@ -53,7 +53,7 @@ variable "usage_report_s3_bucket" {
 variable "name_prefix" {
   type        = string
   description = "Name prefix used to create resources."
-  default = "AWL-WAF-"
+  default = {}
 }
 
 variable "ip_rate_based_rule" {
