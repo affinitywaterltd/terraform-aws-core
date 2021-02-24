@@ -44,6 +44,14 @@ resource "aws_ssm_parameter" "ssm_param_cloudwatch_windows" {
   value     = file("${path.module}/cloudwatch_windows.json")
 }
 
+resource "aws_ssm_parameter" "ssm_param_cloudwatch_windows_elasticbeanstalk" {
+  name      = "AmazonCloudWatch-windows-elasticbeastalk"
+  type      = "String"
+  overwrite = true
+  tags      = local.base_tags
+  value     = file("${path.module}/cloudwatch_windows_elasticbeanstalk.json")
+}
+
 resource "aws_ssm_parameter" "ssm_param_cloudwatch_linux" {
   name      = "AmazonCloudWatch-linux"
   type      = "String"
