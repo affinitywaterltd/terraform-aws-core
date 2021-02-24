@@ -45,7 +45,7 @@ resource "aws_ssm_parameter" "ssm_param_cloudwatch_windows" {
 }
 
 resource "aws_ssm_parameter" "ssm_param_cloudwatch_windows_elasticbeanstalk" {
-  name      = "AmazonCloudWatch-windows-elasticbeastalk"
+  name      = "AmazonCloudWatch-windows-elasticbeanstalk"
   type      = "String"
   overwrite = true
   tags      = local.base_tags
