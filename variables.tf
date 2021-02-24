@@ -49,3 +49,14 @@ variable "default_sms_type" {
 variable "usage_report_s3_bucket" {
   default = null
 }
+
+variable "name_prefix" {
+  type        = string
+  description = "Name prefix used to create resources."
+  default = null
+}
+
+variable "ip_rate_based_rule" {
+  description = "A rate-based rule tracks the rate of requests for each originating IP address, and triggers the rule action when the rate exceeds a limit that you specify on the number of requests in any 5-minute time span"
+  default     = null
+}
