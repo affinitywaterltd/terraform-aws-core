@@ -180,18 +180,22 @@ locals {
       }
     },
     {
-      name     = "AWSManagedRulesPHPRuleSet-rule-3"
+      name     = "AWSManagedRulesAnonymousIpList-rule-3"
       priority = "3"
 
       visibility_config = {
-        cloudwatch_metrics_enabled = false
-        metric_name                = "AWSManagedRulesPHPRuleSet-metric"
-        sampled_requests_enabled   = false
+        cloudwatch_metrics_enabled = true
+        metric_name                = "AWSManagedRulesAnonymousIpList-metric"
+        sampled_requests_enabled   = true
       }
 
       managed_rule_group_statement = {
-        name        = "AWSManagedRulesPHPRuleSet"
+        name        = "AWSManagedRulesAnonymousIpList"
         vendor_name = "AWS"
+        excluded_rule = [
+          "AnonymousIPList",
+          "HostingProviderIPList"
+        ]
       }
     },
     {
