@@ -1,4 +1,5 @@
 resource "aws_cloudwatch_log_group" "firehose" {
+  count       = var.kinesis_enabled && var.waf_enabled ? 1 : 0
   name              = "/aws/kinesis/firehose/waf"
   retention_in_days = "30"
 }
