@@ -108,7 +108,7 @@ variable "visibility_config" {
 variable "create_alb_association" {
   type        = bool
   description = "Whether to create alb association with WAF web acl"
-  default     = true
+  default     = false
 }
 
 variable "create_logging_configuration" {
