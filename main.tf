@@ -90,7 +90,7 @@ module "waf_module" {
   ip_rate_based_rule      = var.ip_rate_based_rule
   name_prefix             = var.name_prefix
   visibility_config       = var.visibility_config
-  rules                   = var.rules
+  rules                   = var.rules==[] ? local.rules : var.rules
   scope                   = var.scope
   create_alb_association  = var.create_alb_association
   allow_default_action    = var.allow_default_action

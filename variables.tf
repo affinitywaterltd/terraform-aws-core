@@ -139,3 +139,59 @@ variable "scope" {
   description = "Specifies whether this is for an AWS CloudFront distribution or for a regional application. Valid values are CLOUDFRONT or REGIONAL. To work with CloudFront, you must also specify the region us-east-1 (N. Virginia) on the AWS provider."
   default     = "REGIONAL"
 }
+
+ 
+locals {
+  rules = [
+    {
+      name     = "AWSManagedRulesCommonRuleSet-rule-1"
+      priority = "1"
+
+      override_action = "none" # set to none if not specified
+
+      visibility_config = {
+        metric_name                = "AWSManagedRulesCommonRuleSet-metric"
+      }
+
+      managed_rule_group_statement = {
+        name        = "AWSManagedRulesCommonRuleSet"
+        vendor_name = "AWS"
+        excluded_rule = [
+          "SizeRestrictions_QUERYSTRING",
+          "SizeRestrictions_BODY",
+          "GenericRFI_QUERYARGUMENTS"
+        ]
+      }
+    },
+    {
+      name     = "AWSManagedRulesKnownBadInputsRuleSet-rule-2"
+      priority = "2"
+
+      override_action = "count"
+
+      visibility_config = {
+        metric_name = "AWSManagedRulesKnownBadInputsRuleSet-metric"
+      }
+
+      managed_rule_group_statement = {
+        name        = "AWSManagedRulesKnownBadInputsRuleSet"
+        vendor_name = "AWS"
+      }
+    },
+    {
+      name     = "AWSManagedRulesPHPRuleSet-rule-3"
+      priority = "3"
+
+      visibility_config = {
+        cloudwatch_metrics_enabled = false
+        metric_name                = "AWSManagedRulesPHPRuleSet-metric"
+        sampled_requests_enabled   = false
+      }
+
+      managed_rule_group_statement = {
+        name        = "AWSManagedRulesPHPRuleSet"
+        vendor_name = "AWS"
+      }
+    }
+  ]
+}
