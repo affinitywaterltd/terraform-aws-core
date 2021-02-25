@@ -151,37 +151,44 @@ locals {
       override_action = "none" # set to none if not specified
 
       visibility_config = {
+        cloudwatch_metrics_enabled = true
+        metric_name                = "AWSManagedRulesCommonRuleSet-metric"
+        sampled_requests_enabled   = true
+      }
+
+      visibility_config = {
         metric_name                = "AWSManagedRulesCommonRuleSet-metric"
       }
 
       managed_rule_group_statement = {
         name        = "AWSManagedRulesCommonRuleSet"
         vendor_name = "AWS"
-        excluded_rule = [
-          "SizeRestrictions_QUERYSTRING",
-          "SizeRestrictions_BODY",
-          "GenericRFI_QUERYARGUMENTS"
-        ]
+        excluded_rule = []
       }
     },
     {
       name     = "AWSManagedRulesKnownBadInputsRuleSet-rule-2"
       priority = "2"
 
-      override_action = "count"
+      override_action = "none" # set to none if not specified
 
       visibility_config = {
+        cloudwatch_metrics_enabled = true
         metric_name = "AWSManagedRulesKnownBadInputsRuleSet-metric"
+        sampled_requests_enabled   = true
       }
 
       managed_rule_group_statement = {
         name        = "AWSManagedRulesKnownBadInputsRuleSet"
         vendor_name = "AWS"
+        excluded_rule = []
       }
     },
     {
       name     = "AWSManagedRulesAnonymousIpList-rule-3"
       priority = "3"
+
+      override_action = "count"
 
       visibility_config = {
         cloudwatch_metrics_enabled = true
@@ -192,10 +199,7 @@ locals {
       managed_rule_group_statement = {
         name        = "AWSManagedRulesAnonymousIpList"
         vendor_name = "AWS"
-        excluded_rule = [
-          "AnonymousIPList",
-          "HostingProviderIPList"
-        ]
+        excluded_rule = []
       }
     },
     {
@@ -205,12 +209,15 @@ locals {
       override_action = "none" # set to none if not specified
 
       visibility_config = {
+        cloudwatch_metrics_enabled = true
         metric_name                = "AWSManagedRulesAmazonIpReputationList-metric"
+        sampled_requests_enabled   = true
       }
 
       managed_rule_group_statement = {
         name        = "AWSManagedRulesAmazonIpReputationList"
         vendor_name = "AWS"
+        excluded_rule = []
       }
     },
     {
@@ -220,12 +227,15 @@ locals {
       override_action = "none" # set to none if not specified
 
       visibility_config = {
+        cloudwatch_metrics_enabled = true
         metric_name                = "AWSManagedRulesSQLiRuleSet-metric"
+        sampled_requests_enabled   = true
       }
 
       managed_rule_group_statement = {
         name        = "AWSManagedRulesSQLiRuleSet"
         vendor_name = "AWS"
+        excluded_rule = []
       }
     },
     {
@@ -235,15 +245,15 @@ locals {
       override_action = "none" # set to none if not specified
 
       visibility_config = {
+        cloudwatch_metrics_enabled = true
         metric_name                = "AWSManagedRulesWindowsRuleSet-metric"
+        sampled_requests_enabled   = true
       }
 
       managed_rule_group_statement = {
         name        = "AWSManagedRulesWindowsRuleSet"
         vendor_name = "AWS"
-        excluded_rule = [
-          "PowerShellCommands_Set1_QUERYARGUMENTS"
-        ]
+        excluded_rule = []
       }
     },
   ]
