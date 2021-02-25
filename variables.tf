@@ -209,5 +209,35 @@ locals {
         vendor_name = "AWS"
       }
     },
+    {
+      name     = "AWSManagedRulesSQLiRuleSet-rule-5"
+      priority = "5"
+
+      override_action = "none" # set to none if not specified
+
+      visibility_config = {
+        metric_name                = "AWSManagedRulesSQLiRuleSet-metric"
+      }
+
+      managed_rule_group_statement = {
+        name        = "AWSManagedRulesSQLiRuleSet"
+        vendor_name = "AWS"
+      }
+    },
+    {
+      name     = "AWSManagedRulesWindowsRuleSet-rule-6"
+      priority = "6"
+
+      override_action = "none" # set to none if not specified
+
+      visibility_config = {
+        metric_name                = "AWSManagedRulesWindowsRuleSet-metric"
+      }
+
+      managed_rule_group_statement = {
+        name        = "AWSManagedRulesWindowsRuleSet"
+        vendor_name = "AWS"
+      }
+    },
   ]
 }
