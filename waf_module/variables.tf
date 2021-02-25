@@ -43,11 +43,15 @@ variable "ip_rate_based_rule" {
   default     = null
 }
 
-#variable "visibility_config" {
-#  description = "Visibility config for WAFv2 web acl. https://www.terraform.io/docs/providers/aws/r/wafv2_web_acl.html#visibility-configuration"
-#  type        = map(string)
-#  default     = {}
-#}
+variable "visibility_config" {
+  description = "Visibility config for WAFv2 web acl. https://www.terraform.io/docs/providers/aws/r/wafv2_web_acl.html#visibility-configuration"
+  type        = map(string)
+  default     = {
+      cloudwatch_metrics_enabled = false
+      metric_name                = ""
+      sampled_requests_enabled   = false
+  }
+}
 
 variable "create_alb_association" {
   type        = bool
