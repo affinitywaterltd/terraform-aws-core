@@ -60,3 +60,9 @@ variable "ip_rate_based_rule" {
   description = "A rate-based rule tracks the rate of requests for each originating IP address, and triggers the rule action when the rate exceeds a limit that you specify on the number of requests in any 5-minute time span"
   default     = null
 }
+
+variable "visibility_config" {
+  description = "Visibility config for WAFv2 web acl. https://www.terraform.io/docs/providers/aws/r/wafv2_web_acl.html#visibility-configuration"
+  type        = map(string)
+  default     = {}
+}
