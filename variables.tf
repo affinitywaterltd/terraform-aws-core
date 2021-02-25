@@ -54,10 +54,10 @@ variable "usage_report_s3_bucket" {
 ### WAF Module Variables
 
 
-variable "enabled" {
+variable "waf_enabled" {
   type        = bool
   description = "Whether to create the resources. Set to `false` to prevent the module from creating any resources"
-  default     = true
+  default     = false
 }
 
 variable "name_prefix" {
