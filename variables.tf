@@ -126,7 +126,7 @@ variable "create_alb_association" {
 variable "create_logging_configuration" {
   type        = bool
   description = "Whether to create logging configuration in order start logging from a WAFv2 Web ACL to Amazon Kinesis Data Firehose."
-  default     = false
+  default     = true
 }
 
 variable "log_destination_configs" {

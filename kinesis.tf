@@ -1,7 +1,13 @@
 resource "aws_cloudwatch_log_group" "firehose" {
-  count       = var.kinesis_enabled && var.waf_enabled ? 1 : 0
+  count             = var.kinesis_enabled && var.waf_enabled ? 1 : 0
   name              = "/aws/kinesis/firehose/waf"
   retention_in_days = "30"
+}
+
+resource "aws_cloudwatch_log_stream" "default" {
+  count          = var.kinesis_enabled && var.waf_enabled ? 1 : 0
+  name           = "default"
+  log_group_name = aws_cloudwatch_log_group.firehose.0.name
 }
 
 
@@ -19,9 +25,9 @@ resource "aws_kinesis_firehose_delivery_stream" "waf_kinesis_firehose" {
     bucket_arn = "arn:aws:s3:::${var.waf_kinesis_s3_bucket}"
 
     cloudwatch_logging_options {
-      enabled = true
-      log_group_name = aws_cloudwatch_log_group.firehose.0.name
-      log_stream_name = "default"
+      enabled         = true
+      log_group_name  = aws_cloudwatch_log_group.firehose.0.name
+      log_stream_name = aws_cloudwatch_log_stream.default.0.name
     }
   }
 }

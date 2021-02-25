@@ -95,6 +95,7 @@ module "waf_module" {
   scope                   = var.scope
   create_alb_association  = var.create_alb_association
   allow_default_action    = var.allow_default_action
+  create_logging_configuration = var.create_logging_configuration
   log_destination_configs = [aws_kinesis_firehose_delivery_stream.waf_kinesis_firehose.0.arn]
 
   tags                    = local.base_tags
