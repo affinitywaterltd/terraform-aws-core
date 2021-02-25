@@ -192,6 +192,26 @@ locals {
         name        = "AWSManagedRulesPHPRuleSet"
         vendor_name = "AWS"
       }
-    }
+    },
+    {
+      name     = "AWSManagedRulesAnonymousIPList-rule-4"
+      priority = "4"
+
+      override_action = "none" # set to none if not specified
+
+      visibility_config = {
+        metric_name                = "AWSManagedRulesAnonymousIPList-metric"
+      }
+
+      managed_rule_group_statement = {
+        name        = "AWSManagedRulesAnonymousIPList"
+        vendor_name = "AWS"
+        excluded_rule = [
+          "SizeRestrictions_QUERYSTRING",
+          "SizeRestrictions_BODY",
+          "GenericRFI_QUERYARGUMENTS"
+        ]
+      }
+    },
   ]
 }
