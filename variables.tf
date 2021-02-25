@@ -237,6 +237,9 @@ locals {
       managed_rule_group_statement = {
         name        = "AWSManagedRulesWindowsRuleSet"
         vendor_name = "AWS"
+        excluded_rule = [
+          "PowerShellCommands_Set1_QUERYARGUMENTS"
+        ]
       }
     },
   ]
