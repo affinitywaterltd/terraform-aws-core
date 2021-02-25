@@ -87,8 +87,9 @@ resource "aws_ssm_parameter" "ssm_param_darktrace_vsensor" {
 
 module "waf_module" {
   source = "./waf_module"
-  ip_rate_based_rule = var.ip_rate_based_rule
-  name_prefix = var.name_prefix
+  ip_rate_based_rule  = var.ip_rate_based_rule
+  name_prefix         = var.name_prefix
+  visibility_config   = var.visibility_config
 
-  tags      = local.base_tags
+  tags                = local.base_tags
 }
