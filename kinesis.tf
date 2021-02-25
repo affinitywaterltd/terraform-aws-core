@@ -16,7 +16,7 @@ resource "aws_kinesis_firehose_delivery_stream" "waf_kinesis_firehose" {
 
   extended_s3_configuration {
     role_arn   = var.waf_kinesis_iam_role
-    bucket_arn = var.waf_kinesis_s3_bucket
+    bucket_arn = "arn:aws:s3:::${var.waf_kinesis_s3_bucket}"
 
     cloudwatch_logging_options {
       enabled = true
