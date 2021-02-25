@@ -23,6 +23,10 @@ variable "waf_kinesis_s3_bucket"{
   default = null
 }
 
+variable "waf_kinesis_iam_role"{
+  default = null
+}
+
 variable "kinesis_enabled"{
   default = false
 }
