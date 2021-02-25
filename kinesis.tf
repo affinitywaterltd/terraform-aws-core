@@ -20,7 +20,7 @@ resource "aws_kinesis_firehose_delivery_stream" "waf_kinesis_firehose" {
 
     cloudwatch_logging_options {
       enabled = true
-      log_group_name = aws_cloudwatch_log_group.firehose.name
+      log_group_name = aws_cloudwatch_log_group.firehose.0.name
       log_stream_name = "default"
     }
   }
