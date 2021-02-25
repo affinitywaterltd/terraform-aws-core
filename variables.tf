@@ -140,7 +140,8 @@ variable "scope" {
   default     = "REGIONAL"
 }
 
- 
+### WAF AWS Managed Rules
+
 locals {
   rules = [
     {
@@ -194,23 +195,18 @@ locals {
       }
     },
     {
-      name     = "AWSManagedRulesAnonymousIPList-rule-4"
+      name     = "AWSManagedRulesAmazonIpReputationList-rule-4"
       priority = "4"
 
       override_action = "none" # set to none if not specified
 
       visibility_config = {
-        metric_name                = "AWSManagedRulesAnonymousIPList-metric"
+        metric_name                = "AWSManagedRulesAmazonIpReputationList-metric"
       }
 
       managed_rule_group_statement = {
-        name        = "AWSManagedRulesAnonymousIPList"
+        name        = "AWSManagedRulesAmazonIpReputationList"
         vendor_name = "AWS"
-        excluded_rule = [
-          "SizeRestrictions_QUERYSTRING",
-          "SizeRestrictions_BODY",
-          "GenericRFI_QUERYARGUMENTS"
-        ]
       }
     },
   ]
