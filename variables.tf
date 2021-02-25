@@ -64,8 +64,8 @@ variable "ip_rate_based_rule" {
 variable "visibility_config" {
   description = "Visibility config for WAFv2 web acl. https://www.terraform.io/docs/providers/aws/r/wafv2_web_acl.html#visibility-configuration"
   type        = map(string)
-  default     = {      cloudwatch_metrics_enabled = false
-                       metric_name                = "friendly-rule-metric-name"
-                       sampled_requests_enabled   = false
+  default     = {      cloudwatch_metrics_enabled = true
+                       metric_name                = "${var.name_prefix}-Test-Metric"
+                       sampled_requests_enabled   = true
       }
 }
