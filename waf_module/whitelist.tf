@@ -26,7 +26,7 @@ resource "aws_wafv2_rule_group" "ip-whitelist" {
       }
     }
 
-    visibility_config = {
+    visibility_config {
       cloudwatch_metrics_enabled = true
       metric_name                = "${var.name_prefix}-ip-whitelist-metric"
       sampled_requests_enabled   = true
