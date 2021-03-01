@@ -20,6 +20,7 @@ locals {
         arn  = aws_wafv2_rule_group.ip-whitelist.arn
       }
     }
+  ]
 }
 
 
