@@ -160,7 +160,7 @@ locals {
       name     = "AWSManagedRulesCommonRuleSet-rule-1"
       priority = "1"
 
-      override_action = "none" # set to none if not specified
+      override_action = "count" # set to none if not specified
 
       visibility_config = {
         cloudwatch_metrics_enabled = true
@@ -182,7 +182,7 @@ locals {
       name     = "AWSManagedRulesKnownBadInputsRuleSet-rule-2"
       priority = "2"
 
-      override_action = "none" # set to none if not specified
+      override_action = "count" # set to none if not specified
 
       visibility_config = {
         cloudwatch_metrics_enabled = true
@@ -218,7 +218,7 @@ locals {
       name     = "AWSManagedRulesAmazonIpReputationList-rule-4"
       priority = "4"
 
-      override_action = "none" # set to none if not specified
+      override_action = "count" # set to none if not specified
 
       visibility_config = {
         cloudwatch_metrics_enabled = true
@@ -236,7 +236,7 @@ locals {
       name     = "AWSManagedRulesSQLiRuleSet-rule-5"
       priority = "5"
 
-      override_action = "none" # set to none if not specified
+      override_action = "count" # set to none if not specified
 
       visibility_config = {
         cloudwatch_metrics_enabled = true
@@ -254,7 +254,7 @@ locals {
       name     = "AWSManagedRulesWindowsRuleSet-rule-6"
       priority = "6"
 
-      override_action = "none" # set to none if not specified
+      override_action = "count" # set to none if not specified
 
       visibility_config = {
         cloudwatch_metrics_enabled = true
