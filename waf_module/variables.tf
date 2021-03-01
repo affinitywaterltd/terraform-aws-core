@@ -1,3 +1,28 @@
+locals {
+  ip_set_rules = [
+    {
+      name     = "${var.name_prefix}-ip-whitelist-rule-1"
+      priority = "10"
+
+      override_action = "allow" # set to none if not specified
+
+      visibility_config = {
+        cloudwatch_metrics_enabled = true
+        metric_name                = "${var.name_prefix}-ip-whitelist-metric"
+        sampled_requests_enabled   = true
+      }
+
+      visibility_config = {
+        metric_name                = "${var.name_prefix}-ip-whitelist-metric"
+      }
+
+      ip_set_reference_statement = {
+        arn  = aws_wafv2_rule_group.ip-whitelist.arn
+      }
+    }
+}
+
+
 variable "enabled" {
   type        = bool
   description = "Whether to create the resources. Set to `false` to prevent the module from creating any resources"

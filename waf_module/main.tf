@@ -66,7 +66,7 @@ resource "aws_wafv2_web_acl" "main" {
   }
 
   dynamic "rule" {
-    for_each = var.ip_set_rules
+    for_each = length(var.ip_set_rules) > 0 ? var.ip_set_rules : local.ip_set_rules
     content {
       name     = lookup(rule.value, "name")
       priority = lookup(rule.value, "priority")

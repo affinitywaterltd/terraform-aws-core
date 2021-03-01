@@ -92,6 +92,7 @@ module "waf_module" {
   name_prefix             = var.name_prefix
   visibility_config       = var.visibility_config
   rules                   = local.rules
+  ip_set_rules            = var.ip_set_rules
   scope                   = var.scope
   create_alb_association  = var.create_alb_association
   allow_default_action    = var.allow_default_action

@@ -158,7 +158,7 @@ locals {
   rules = [
     {
       name     = "AWSManagedRulesCommonRuleSet-rule-1"
-      priority = "1"
+      priority = "20"
 
       override_action = "none" # set to none if not specified
 
@@ -180,7 +180,7 @@ locals {
     },
     {
       name     = "AWSManagedRulesKnownBadInputsRuleSet-rule-2"
-      priority = "2"
+      priority = "30"
 
       override_action = "none" # set to none if not specified
 
@@ -198,7 +198,7 @@ locals {
     },
     {
       name     = "AWSManagedRulesAnonymousIpList-rule-3"
-      priority = "3"
+      priority = "40"
 
       override_action = "count"
 
@@ -216,7 +216,7 @@ locals {
     },
     {
       name     = "AWSManagedRulesAmazonIpReputationList-rule-4"
-      priority = "4"
+      priority = "50"
 
       override_action = "none" # set to none if not specified
 
@@ -234,7 +234,7 @@ locals {
     },
     {
       name     = "AWSManagedRulesSQLiRuleSet-rule-5"
-      priority = "5"
+      priority = "60"
 
       override_action = "none" # set to none if not specified
 
@@ -252,7 +252,7 @@ locals {
     },
     {
       name     = "AWSManagedRulesWindowsRuleSet-rule-6"
-      priority = "6"
+      priority = "70"
 
       override_action = "none" # set to none if not specified
 
