@@ -1,6 +1,6 @@
 locals {
   ip_set_rules = []
-  rule_groups = []
+  rule_groups = [
     {
       name     = "${var.name_prefix}-group-ip-whitelist-rule-1"
       priority = "10"
