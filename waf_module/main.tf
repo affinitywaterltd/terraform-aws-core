@@ -66,6 +66,51 @@ resource "aws_wafv2_web_acl" "main" {
   }
 
   dynamic "rule" {
+    for_each = length(var.rule_groups) > 0 ? var.rule_groups : local.rule_groups
+    content {
+      name     = lookup(rule.value, "name")
+      priority = lookup(rule.value, "priority")
+
+      override_action {
+        dynamic "none" {
+          for_each = length(lookup(rule.value, "override_action", {})) == 0 || lookup(rule.value, "override_action", {}) == "none" ? [1] : []
+          content {}
+        }
+
+        dynamic "count" {
+          for_each = lookup(rule.value, "override_action", {}) == "count" ? [1] : []
+          content {}
+        }
+      }
+
+      statement {
+        dynamic "rule_group_reference_statement" {
+          for_each = length(lookup(rule.value, "rule_group_reference_statement", {})) == 0 ? [] : [lookup(rule.value, "rule_group_reference_statement", {})]
+          content {
+            arn        = lookup(rule_group_reference_statement.value, "arn")
+
+            dynamic "excluded_rule" {
+              for_each = length(lookup(rule_group_reference_statement.value, "excluded_rule", {})) == 0 ? [] : toset(lookup(rule_group_reference_statement.value, "excluded_rule"))
+              content {
+                name = excluded_rule.value
+              }
+            }
+          }
+        }
+      }
+
+      dynamic "visibility_config" {
+        for_each = length(lookup(rule.value, "visibility_config")) == 0 ? [] : [lookup(rule.value, "visibility_config", {})]
+        content {
+          cloudwatch_metrics_enabled = lookup(visibility_config.value, "cloudwatch_metrics_enabled", true)
+          metric_name                = lookup(visibility_config.value, "metric_name", "${var.name_prefix}-default-rule-metric-name")
+          sampled_requests_enabled   = lookup(visibility_config.value, "sampled_requests_enabled", true)
+        }
+      }
+    }
+  }
+
+  dynamic "rule" {
     for_each = length(var.ip_set_rules) > 0 ? var.ip_set_rules : local.ip_set_rules
     content {
       name     = lookup(rule.value, "name")

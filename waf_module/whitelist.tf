@@ -3,11 +3,11 @@ resource "aws_wafv2_ip_set" "ip-whitelist" {
   description        = "IP Whitelist"
   scope              = "REGIONAL"
   ip_address_version = "IPV4"
-  addresses          = ["107.47.0.0/16"]
+  addresses          = []
 }
 
 resource "aws_wafv2_rule_group" "ip-whitelist" {
-  name        = "${var.name_prefix}-ip-whitelist"
+  name        = "${var.name_prefix}-group-ip-whitelist"
   description = "An rule group containing whitelist IPs"
   scope       = "REGIONAL"
   capacity    = 50

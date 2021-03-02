@@ -1,22 +1,23 @@
 locals {
-  ip_set_rules = [
+  ip_set_rules = []
+  rule_groups = []
     {
-      name     = "${var.name_prefix}-ip-whitelist-rule-1"
+      name     = "${var.name_prefix}-group-ip-whitelist-rule-1"
       priority = "10"
 
       override_action = "allow" # set to none if not specified
 
       visibility_config = {
         cloudwatch_metrics_enabled = true
-        metric_name                = "${var.name_prefix}-ip-whitelist-metric"
+        metric_name                = "${var.name_prefix}-group-ip-whitelist-metric"
         sampled_requests_enabled   = true
       }
 
       visibility_config = {
-        metric_name                = "${var.name_prefix}-ip-whitelist-metric"
+        metric_name                = "${var.name_prefix}-group-ip-whitelist-metric"
       }
 
-      ip_set_reference_statement = {
+      rule_group_reference_statement = {
         arn  = aws_wafv2_rule_group.ip-whitelist.arn
       }
     }
@@ -61,6 +62,11 @@ variable "rules" {
 
 variable "ip_set_rules" {
   description = "List of WAF ip set rules to detect web requests coming from particular IP addresses or address ranges."
+  default     = []
+}
+
+variable "rule_groups" {
+  description = "List of WAF rule groups"
   default     = []
 }
 
