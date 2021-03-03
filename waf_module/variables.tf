@@ -18,7 +18,7 @@ locals {
       }
 
       rule_group_reference_statement = {
-        arn  = aws_wafv2_rule_group.ip-whitelist.arn
+        arn  = length(aws_wafv2_rule_group.ip-whitelist.*.arn) > 0 ? aws_wafv2_rule_group.ip-whitelist.0.arn : null
       }
     }
   ]
