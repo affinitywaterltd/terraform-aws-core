@@ -24,7 +24,7 @@ resource "aws_wafv2_rule_group" "ip-whitelist" {
 
     statement {
       ip_set_reference_statement {
-        arn = aws_wafv2_ip_set.ip-whitelist.arn
+        arn = aws_wafv2_ip_set.ip-whitelist.0.arn
       }
     }
 
