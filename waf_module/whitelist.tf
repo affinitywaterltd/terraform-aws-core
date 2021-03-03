@@ -1,4 +1,5 @@
 resource "aws_wafv2_ip_set" "ip-whitelist" {
+  count              = var.enabled ? 1 : 0
   name               = "${var.name_prefix}-ip-whitelist"
   description        = "IP Whitelist"
   scope              = "REGIONAL"
@@ -7,6 +8,7 @@ resource "aws_wafv2_ip_set" "ip-whitelist" {
 }
 
 resource "aws_wafv2_rule_group" "ip-whitelist" {
+  count       = var.enabled ? 1 : 0
   name        = "${var.name_prefix}-group-ip-whitelist"
   description = "An rule group containing whitelist IPs"
   scope       = "REGIONAL"
