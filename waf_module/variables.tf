@@ -5,7 +5,7 @@ locals {
       name     = "${var.name_prefix}-group-ip-whitelist-rule-1"
       priority = "10"
 
-      override_action = "allow" # set to none if not specified
+      override_action = "none" # set to none if not specified
 
       visibility_config = {
         cloudwatch_metrics_enabled = true
