@@ -276,7 +276,7 @@ locals {
 
       visibility_config = {
         cloudwatch_metrics_enabled = true
-        metric_name                = "CyberSecurityCloud-HighSecurityOWASPSet-"
+        metric_name                = "CyberSecurityCloud-HighSecurityOWASPSet-metric"
         sampled_requests_enabled   = true
       }
 
