@@ -268,5 +268,23 @@ locals {
         excluded_rule = []
       }
     },
+    {
+      name     = "CyberSecurityCloudInc-CyberSecurityCloud-HighSecurityOWASPSet-rule-7"
+      priority = "80"
+
+      override_action = "none" # set to none if not specified
+
+      visibility_config = {
+        cloudwatch_metrics_enabled = true
+        metric_name                = "CyberSecurityCloud-HighSecurityOWASPSet-"
+        sampled_requests_enabled   = true
+      }
+
+      managed_rule_group_statement = {
+        name        = "CyberSecurityCloud-HighSecurityOWASPSet-"
+        vendor_name = "Cyber Security Cloud Inc."
+        excluded_rule = []
+      }
+    },
   ]
 }
