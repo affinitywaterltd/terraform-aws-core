@@ -237,7 +237,7 @@ resource "aws_wafv2_web_acl_association" "alb_list" {
 # WAFv2 web acl logging configuration with kinesis firehose
 #####
 resource "aws_wafv2_web_acl_logging_configuration" "main" {
-  count = var.enabled && var.create_logging_configuration && length(var.log_destination_configs) > 0 ? 1 : 0
+  count = var.enabled && var.create_logging_configuration > 0 ? 1 : 0
 
   log_destination_configs = var.log_destination_configs
   resource_arn            = aws_wafv2_web_acl.main[0].arn
