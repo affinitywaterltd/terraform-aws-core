@@ -1,4 +1,5 @@
 # Default Option Group for Oracle-SE1
+/*
 resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_a" {
   name                     = "rds-options-oracle-se1-v11-2-a"
   option_group_description = "Default + Statspack + NW Encryption"
@@ -31,7 +32,7 @@ resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_a" {
       value = "RC4_256,AES256,AES192,3DES168,RC4_128,AES128,3DES112,RC4_56,DES,RC4_40,DES40"
     }
   }
-}
+}*/
 
 # Default Option Group for Oracle-SE2
 resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_a" {
@@ -102,7 +103,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v12_2_a" {
     }
   }
 }
-
+/*
 # Default Option Group with Timezone for Oracle-SE1
 resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_b" {
   name                     = "rds-options-oracle-se1-v11-2-b"
@@ -145,7 +146,7 @@ resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_b" {
       value = "Europe/London"
     }
   }
-}
+}*/
 
 # Default Option Group with Timezone for Oracle-SE2
 resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_b" {
@@ -322,7 +323,7 @@ resource "aws_db_option_group" "rds_options_oracle_se2_v19_0_b" {
     }
   }
 }
-
+/*
 # Default Option Group with Timezone for Oracle-SE1
 resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_c" {
   name                     = "rds-options-oracle-se1-v11-2-c"
@@ -344,7 +345,7 @@ resource "aws_db_option_group" "rds_options_oracle_se1_v11_2_c" {
       value = "Europe/London"
     }
   }
-}
+}*/
 
 # Default Option Group with Timezone for Oracle-SE2
 resource "aws_db_option_group" "rds_options_oracle_se2_v12_1_c" {
