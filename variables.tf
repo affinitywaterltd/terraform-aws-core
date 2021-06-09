@@ -175,7 +175,7 @@ locals {
       managed_rule_group_statement = {
         name        = "AWSManagedRulesCommonRuleSet"
         vendor_name = "AWS"
-        excluded_rule = []
+        excluded_rule = ["SizeRestrictions_BODY"]
       }
     },
     {
