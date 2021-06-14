@@ -194,6 +194,94 @@ resource "aws_backup_selection" "aws_backup_selection_daily_2200_30days" {
   }
 }
 
+#
+# Frequency - Weekly
+# Time - 2200
+# Retention - 14days
+#
+# AWS Backup Plan
+#
+resource "aws_backup_plan" "aws_backup_plan_weekly_2200_14days" {
+  name = "aws_backup_plan_weekly_2200_14days"
+  rule {
+    rule_name         = "aws_backup_rule_weekly_2200_14days"
+    target_vault_name = aws_backup_vault.aws_backup_vault_master.name
+
+    schedule          = "cron(0 ${22 + local.time_offset} * * 0 *)"
+    start_window      = 60
+    completion_window = 360
+
+    recovery_point_tags = {
+        BackupApplication   = "AWS Backups"
+        BackupPlan          = "aws_backup_plan_weekly_2200_14days"
+    }
+
+    lifecycle {
+      delete_after        = 14
+    }
+  }
+}
+
+#
+# AWS Backup Selection
+#
+resource "aws_backup_selection" "aws_backup_selection_weekly_2200_14days" {
+  name          = "aws_backup_selection_weekly_2200_14days"
+  plan_id       = aws_backup_plan.aws_backup_plan_weekly_2200_14days.id
+  iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
+
+  selection_tag {
+    type  = "STRINGEQUALS"
+    key   = aws_backup_plan.aws_backup_plan_weekly_2200_14days.name
+    value = "true"
+  }
+
+}
+
+#
+# Frequency - Daily
+# Time - 2200
+# Retention - 14days
+#
+# AWS Backup Plan
+#
+resource "aws_backup_plan" "aws_backup_plan_daily_2200_14days" {
+  name = "aws_backup_plan_daily_2200_14days"
+  rule {
+    rule_name         = "aws_backup_rule_daily_2200_14days"
+    target_vault_name = aws_backup_vault.aws_backup_vault_master.name
+
+    schedule          = "cron(0 ${22 + local.time_offset} * * ? *)"
+    start_window      = 60
+    completion_window = 360
+
+    recovery_point_tags = {
+        BackupApplication   = "AWS Backups"
+        BackupPlan          = "aws_backup_plan_daily_2200_14days"
+    }
+
+    lifecycle {
+      delete_after        = 14
+    }
+  }
+}
+
+#
+# AWS Backup Selection
+#
+resource "aws_backup_selection" "aws_backup_selection_daily_2200_14days" {
+  name          = "aws_backup_selection_daily_2200_14days"
+  plan_id       = aws_backup_plan.aws_backup_plan_daily_2200_14days.id
+  iam_role_arn  = aws_iam_role.aws_backup_service_role.arn
+
+  selection_tag {
+    type  = "STRINGEQUALS"
+    key   = aws_backup_plan.aws_backup_plan_daily_2200_14days.name
+    value = "true"
+  }
+
+}
+
 
 #
 # Frequency - Daily
