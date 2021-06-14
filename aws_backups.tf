@@ -207,7 +207,7 @@ resource "aws_backup_plan" "aws_backup_plan_weekly_2200_14days" {
     rule_name         = "aws_backup_rule_weekly_2200_14days"
     target_vault_name = aws_backup_vault.aws_backup_vault_master.name
 
-    schedule          = "cron(0 ${22 + local.time_offset} * * 1 *)"
+    schedule          = "cron(0 ${22 + local.time_offset} ? * 1 *)"
     start_window      = 60
     completion_window = 360
 
