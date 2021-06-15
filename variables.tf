@@ -1,10 +1,12 @@
 # Bucket ID
-
 data "terraform_remote_state" "logs" {
-  backend = "atlas"
+  backend = "remote"
 
   config = {
-    name = "AffinityWater/logs-core-prod"
+    organization = "AffinityWater"
+    workspaces = {
+      name = "AffinityWater/logs-core-prod" # Replace with variable
+    }
   }
 }
 
