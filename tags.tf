@@ -1,6 +1,6 @@
 locals {
   base_tags = {
-    "Terraform" = "Trues"
+    "Terraform" = "True"
   }
 }
 
