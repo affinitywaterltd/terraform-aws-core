@@ -5,7 +5,7 @@ data "terraform_remote_state" "logs" {
   config = {
     organization = "AffinityWater"
     workspaces = {
-      name = "AffinityWater/logs-core-prod" # Replace with variable
+      name = "logs-core-prod" # Replace with variable
     }
   }
 }
